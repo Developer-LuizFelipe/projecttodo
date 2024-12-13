@@ -23,8 +23,8 @@ const getTask = async (req, res) => {
 const putTask = async (req, res) => {
     try {
         const { id } = req.params;
-
-        const task = await Task.findByIdAndUpdate(id, req.body.nome);
+        
+        const task = await Task.findByIdAndUpdate(id, {nome:req.body.nome});
 
         if (!task) {
             return res.status(404).json({ message: "Task not found" });
